@@ -1,153 +1,92 @@
-# instagram-phishing-tool
- Educational phishing simulation tool for cybersecurity projects
-# 🛡️ Instagram Phishing Awareness Simulator
+# Instagram Phishing Simulation Tool
 
-> **⚠️ Educational Purpose Only**
->
-> This project is designed for **cybersecurity education and awareness training**. It demonstrates common characteristics of phishing websites in a safe, controlled environment to help users recognize and avoid phishing attacks.
->
-> **This project does not collect, store, or transmit real user credentials.**
+> **⚠️ IMPORTANT DISCLAIMER: This tool is for EDUCATIONAL PURPOSES ONLY.**
+> Unauthorized use of phishing techniques is illegal in most jurisdictions.
+> Only use this on systems you own or have explicit written permission to test.
 
----
+## 📋 Overview
 
-## 📖 Overview
+A Python-based Instagram login page clone designed to demonstrate how credential harvesting phishing attacks work. Created as part of a cybersecurity educational project to understand social engineering attack vectors.
 
-The **Instagram Phishing Awareness Simulator** is a Python-based web application that mimics the appearance of a login page for educational demonstrations. It helps students, security enthusiasts, and organizations understand how phishing attacks deceive users and how to identify warning signs before entering sensitive information.
+## 🎯 Purpose
 
-This project was created as part of a cybersecurity learning portfolio.
+This tool demonstrates:
 
----
+- How phishing websites are created using site cloning
+- How unsuspecting users can be tricked into entering credentials
+- The importance of browser security indicators (HTTPS, URL inspection)
+- Why Multi-Factor Authentication (MFA) is critical
 
-## 🎯 Objectives
+## ⚙️ How It Works
 
-* Demonstrate how phishing websites imitate legitimate login pages.
-* Teach users how to identify suspicious URLs and fake websites.
-* Promote safe browsing habits.
-* Explain the importance of HTTPS and domain verification.
-* Raise awareness about Multi-Factor Authentication (MFA).
-* Support cybersecurity education and security awareness training.
+1. The Python server hosts a cloned Instagram login page
+2. When a user visits the page and enters credentials, they are captured
+3. The user is then redirected to the real Instagram website
+4. Captured credentials are logged to a text file
 
----
+## 🛠️ Requirements
 
-## ✨ Features
+- **Kali Linux** (or any Linux distribution with Python 3)
+- Python 3
+- Network access (for serving the page)
 
-* Responsive Instagram-inspired login interface.
-* Local web server built with Python.
-* Educational warning message after demonstration.
-* Redirects users to the official Instagram login page.
-* No credential collection or storage.
-* Lightweight and easy to run on Kali Linux or any Linux distribution.
-
----
-
-## 🛠️ Technologies Used
-
-* Python 3
-* Flask
-* HTML5
-* CSS3
-* JavaScript
-* Kali Linux (Development Environment)
-
----
-
-## 📂 Project Structure
-
-```
-instagram-phishing-awareness/
-│
-├── app.py
-├── templates/
-│   └── index.html
-├── static/
-│   ├── css/
-│   ├── js/
-│   └── images/
-├── README.md
-└── requirements.txt
-```
-
----
-
-## 🚀 Installation
-
-Clone the repository:
+## 📦 Installation
 
 ```bash
-git clone https://github.com/sooryakiran9961/instagram-phishing-awareness.git
-```
+# Clone the repository
+git clone https://github.com/sooryakiran9961/instagram-phishing-tool.git
 
-Navigate to the project folder:
+# Navigate to the project directory
+cd instagram-phishing-tool
+# Make the script executable (if not already)
+chmod +x phish.py
 
-```bash
-cd instagram-phishing-awareness
-```
+# Run with sudo (required for binding to ports)Accessing the phishing page
+Locally: Open http://localhost:8080 in a browser
+Network (same Wi-Fi): Other devices visit http://<YOUR_IP>:8080
+Find your IP with: hostname -I or ip a | grep inet
+Captured credentials
+After someone submits the form, credentials are:
 
-Create a virtual environment (optional):
+Displayed in the terminal in real-time
+Saved to captured.txt in the project directory
+To view saved credentials:
+cat captured.txt
+🧪 Testing It Yourself
+Run the server
+Open a browser and go to http://localhost:8080
+Enter test credentials (e.g., testuser / testpass123)
+Observe the credentials appear in the terminal
+Check the captured.txt file
+📁 Project Structure
+instagram-phishing-tool/
+├── phish.py          # Python HTTP server with credential harvesting
+├── index.html        # Cloned Instagram login page (HTML/CSS)
+├── captured.txt      # Captured credentials (auto-generated)
+├── .gitignore        # Files excluded from version control
+└── README.md         # This file
+🔧 Customization Options
+Change the port
+Edit phish.py and change PORT = 8080 to any available port.
 
-```bash
-python3 -m venv venv
-```
+Add HTTPS (SSL)
+# Generate a self-signed certificate
+openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 365 -nodes
 
-Activate the virtual environment:
+# Modify phish.py to use SSL (requires additional code changes)
+Use ngrok for external access
+# Install ngrok (requires free account at ngrok.com)
+sudo apt install ngrok
 
-```bash
-source venv/bin/activate
-```
+# Expose your local server
+ngrok http 8080
+🚫 Detection & Prevention
+This tool also teaches how to detect and prevent phishing attacks:
+Indicator	What to look for
+URL inspection	Check for misspellings or unusual domains
+HTTPS	Look for the padlock icon in the address bar
+Browser warnings	Modern browsers flag suspicious pages
+Password managers	Most autofill only on legitimate domains
+MFA/2FA	Secondary authentication prevents harvested credentials from working
 
-Install the required packages:
 
-```bash
-pip install -r requirements.txt
-```
-
-Run the application:
-
-```bash
-python app.py
-```
-
-Open your browser and visit:
-
-```
-http://127.0.0.1:5000
-```
-
----
-
-## 🎓 Learning Outcomes
-
-By exploring this project, users can learn:
-
-* How phishing websites imitate trusted services.
-* Why checking website URLs is essential.
-* The importance of HTTPS certificates.
-* Common social engineering techniques.
-* Best practices for protecting online accounts.
-* How Multi-Factor Authentication helps defend against phishing.
-
----
-
-## ⚠️ Disclaimer
-
-This repository is intended **solely for educational purposes, cybersecurity awareness, and defensive security training**.
-
-The project is designed to help users recognize phishing attempts and improve their security awareness.
-
-Do **not** modify or use this project for unauthorized activities or to deceive others. Always obtain proper authorization before conducting any security testing.
-
----
-
-## 👨‍💻 Author
-
-**Soorya Kiran**
-
-Cybersecurity Student | Ethical Hacking Enthusiast | Python Developer
-
-GitHub: https://github.com/sooryakiran9961
-
----
-
-## ⭐ Support
-
-If you found this project helpful for learning cybersecurity concepts, consider giving the repository a ⭐ to support future educational projects.
